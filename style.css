@@ -62,15 +62,39 @@ li {
     border-radius: 8px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-li button {
+li span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Botão CHECK ✔ */
+li button:nth-child(2) {
+    background-color: #16a34a;
+}
+
+li button:nth-child(2):hover {
+    background-color: #15803d;
+}
+
+/* Botão REMOVER ❌ */
+li button:nth-child(3) {
     background-color: #dc2626;
+}
+
+li button:nth-child(3):hover {
+    background-color: #b91c1c;
+}
+
+li button {
+    margin-left: 5px;
     padding: 6px 10px;
 }
 
-li button:hover {
-    background-color: #b91c1c;
+/* Tarefa concluída */
+.concluida {
+    text-decoration: line-through;
+    color: gray;
 }
