@@ -1,100 +1,38 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #dbeafe, #f0f0f0);
-    min-height: 100vh;
-    margin: 0;
+function adicionar() {
+    let input = document.getElementById("tarefa");
+    let texto = input.value;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    if (texto === "") {
+        alert("Digite uma tarefa!");
+        return;
+    }
 
-.container {
-    background-color: white;
-    width: 400px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    text-align: center;
-}
+    let lista = document.getElementById("lista");
 
-h1 {
-    color: #1f2937;
-    margin-bottom: 20px;
-}
+    let li = document.createElement("li");
 
-.area-tarefa {
-    display: flex;
-    gap: 10px;
-}
+    let span = document.createElement("span");
+    span.innerText = texto;
 
-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    outline: none;
-}
+    let botaoCheck = document.createElement("button");
+    botaoCheck.innerText = "Feita!";
 
-button {
-    padding: 10px 14px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
+    botaoCheck.onclick = function() {
+        span.classList.toggle("concluida");
+    };
 
-button:hover {
-    background-color: #1d4ed8;
-}
+    let botaoRemover = document.createElement("button");
+    botaoRemover.innerText = "X";
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
+    botaoRemover.onclick = function() {
+        lista.removeChild(li);
+    };
 
-li {
-    background-color: #f8fafc;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
+    li.appendChild(span);
+    li.appendChild(botaoCheck);
+    li.appendChild(botaoRemover);
 
-    display: flex;
-    align-items: center;
-}
+    lista.appendChild(li);
 
-li span {
-    flex: 1;
-    text-align: left;
-}
-
-/* Botão CHECK ✔ */
-li button:nth-child(2) {
-    background-color: #16a34a;
-}
-
-li button:nth-child(2):hover {
-    background-color: #15803d;
-}
-
-/* Botão REMOVER ❌ */
-li button:nth-child(3) {
-    background-color: #dc2626;
-}
-
-li button:nth-child(3):hover {
-    background-color: #b91c1c;
-}
-
-li button {
-    margin-left: 5px;
-    padding: 6px 10px;
-}
-
-/* Tarefa concluída */
-.concluida {
-    text-decoration: line-through;
-    color: gray;
+    input.value = "";
 }
