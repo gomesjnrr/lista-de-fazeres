@@ -15,7 +15,7 @@ function adicionar() {
     span.innerText = texto;
 
     let botaoCheck = document.createElement("button");
-    botaoCheck.innerText = "✔";
+    botaoCheck.innerText = "Feito !";
 
     botaoCheck.onclick = function() {
         span.classList.toggle("concluida");
