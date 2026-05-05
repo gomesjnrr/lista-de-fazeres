@@ -10,20 +10,28 @@ function adicionar() {
     let lista = document.getElementById("lista");
 
     let li = document.createElement("li");
-    li.innerText = texto;
 
-    li.onclick = function() {
-        li.style.textDecoration = "line-through";
-    }
+    let span = document.createElement("span");
+    span.innerText = texto;
 
-    let botao = document.createElement("button");
-    botao.innerText = "X";
+    let botaoCheck = document.createElement("button");
+    botaoCheck.innerText = "✔";
 
-    botao.onclick = function() {
+    botaoCheck.onclick = function() {
+        span.classList.toggle("concluida");
+    };
+
+    let botaoRemover = document.createElement("button");
+    botaoRemover.innerText = "X";
+
+    botaoRemover.onclick = function() {
         lista.removeChild(li);
-    }
+    };
 
-    li.appendChild(botao);
+    li.appendChild(span);
+    li.appendChild(botaoCheck);
+    li.appendChild(botaoRemover);
+
     lista.appendChild(li);
 
     input.value = "";
